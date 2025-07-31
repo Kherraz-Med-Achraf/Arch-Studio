@@ -1,0 +1,91 @@
+// src/styles/_design-system.scss
+//@use '../styles/design-system' as *;
+
+// ========== COLORS ==========
+$very-dark-blue: #1b1d23;
+$dark-grey: #60636d;
+$medium-grey: #7d828f;
+$light-grey: #c8ccd8;
+$very-light-grey: #eeeff4;
+$red: #df5656;
+
+// ========== TYPOGRAPHY ==========
+$font-family-main: 'League Spartan', Arial, Helvetica, sans-serif;
+
+$weight-medium: 500;
+$weight-bold: 700;
+
+$font-size-heading-xl: 250px;
+$line-height-heading-xl: 200px;
+$letter-spacing-heading-xl: -5px;
+
+$font-size-heading-lg: 96px;
+$line-height-heading-lg: 80px;
+$letter-spacing-heading-lg: -2px;
+
+$font-size-heading-md: 72px;
+$line-height-heading-md: 64px;
+$letter-spacing-heading-md: -2px;
+
+$font-size-heading-sm: 32px;
+$line-height-heading-sm: 40px;
+$letter-spacing-heading-sm: 0;
+
+$font-size-body: 18px;
+$line-height-body: 24px;
+
+// ========== BREAKPOINTS ==========
+$breakpoint-mobile: 600px;
+$breakpoint-tablet: 900px;
+
+// ========== MIXINS ==========
+// Headings
+@mixin heading-xl {
+  font-family: $font-family-main;
+  font-size: $font-size-heading-xl;
+  line-height: $line-height-heading-xl;
+  font-weight: $weight-bold;
+  letter-spacing: $letter-spacing-heading-xl;
+}
+@mixin heading-lg {
+  font-family: $font-family-main;
+  font-size: $font-size-heading-lg;
+  line-height: $line-height-heading-lg;
+  font-weight: $weight-bold;
+  letter-spacing: $letter-spacing-heading-lg;
+}
+@mixin heading-md {
+  font-family: $font-family-main;
+  font-size: $font-size-heading-md;
+  line-height: $line-height-heading-md;
+  font-weight: $weight-bold;
+  letter-spacing: $letter-spacing-heading-md;
+}
+@mixin heading-sm {
+  font-family: $font-family-main;
+  font-size: $font-size-heading-sm;
+  line-height: $line-height-heading-sm;
+  font-weight: $weight-bold;
+  letter-spacing: $letter-spacing-heading-sm;
+}
+@mixin body-text {
+  font-family: $font-family-main;
+  font-size: $font-size-body;
+  line-height: $line-height-body;
+  font-weight: $weight-medium;
+  letter-spacing: 0;
+}
+
+// ========== EXEMPLE BUTTON ==========
+@mixin button-primary {
+  background: $very-dark-blue;
+  color: $very-light-grey;
+  border-radius: 6px;
+  padding: 16px 32px;
+  font-family: $font-family-main;
+  font-weight: $weight-bold;
+  font-size: 18px;
+  transition: background 0.2s;
+  cursor: pointer;
+  border: none;
+}
