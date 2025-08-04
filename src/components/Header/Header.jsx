@@ -1,9 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { gsap } from "gsap";
+import VerticalNavLabel from "../VerticalNavLabel/VerticalNavLabel";
 
 import styles from "./Header.module.scss";
-import logo from "../assets/logo.svg";
+import logo from "../../assets/logo.svg";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -51,6 +52,7 @@ const Header = () => {
 
   return (
     <>
+      <VerticalNavLabel />
       <header className={styles.header}>
         <div className={styles.logo}>
           <NavLink to="/" onClick={handleNavClick}>
