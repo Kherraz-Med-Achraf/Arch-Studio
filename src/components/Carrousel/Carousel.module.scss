@@ -1,0 +1,148 @@
+@use "../../styles/design-system" as *;
+
+.carousel {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.slides {
+  position: relative;
+  width: 100%;
+}
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.35);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Conteneur texte */
+  .slideContent {
+    position: absolute;
+    width: 100%;
+    padding: 0 32px;
+    display: flex;
+    flex-direction: column;
+    z-index: 2;
+    @media (min-width: $breakpoint-tablet) {
+      padding: 0 58px;
+    }
+    @media (min-width: $breakpoint-desktop) {
+      padding: 0 190px;
+    }
+  }
+
+  .slideHeader {
+    font-family: $font-family-main;
+    font-size: 48px;
+    font-weight: $weight-bold;
+    line-height: 48px;
+    color: white;
+    letter-spacing: -1.2px;
+    margin-bottom: 11px;
+    max-width: 311px;
+    @media (min-width: $breakpoint-tablet) {
+      @include heading-lg;
+      margin-bottom: 10px;
+      max-width: 457px;
+    }
+    @media (min-width: $breakpoint-desktop) {
+      max-width: 544px;
+    }
+  }
+
+  .slideText {
+    @include body-text;
+    color: white;
+    margin-bottom: 83px;
+    max-width: 311px;
+    @media (min-width: $breakpoint-tablet) {
+      margin-bottom: 41px;
+      max-width: 457px;
+    }
+    @media (min-width: $breakpoint-desktop) {
+      max-width: 445px;
+    }
+  }
+
+  .slideButton {
+    @include button-primary;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+  }
+  .icon {
+    fill: white;
+    width: 24px;
+    height: auto;
+  }
+}
+
+.active {
+  position: relative;
+  opacity: 1;
+  visibility: visible;
+}
+
+.controls {
+  display: flex;
+  gap: 24px;
+  list-style: none;
+  margin: 24px 0 0 24px;
+  padding: 0;
+  z-index: 10;
+
+  @media (max-width: $breakpoint-tablet) {
+    display: none;
+  }
+}
+
+.controlsItem,
+.controlsItemActive {
+  list-style: none;
+
+  button {
+    width: 80px;
+    height: 80px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-family: $font-family-main;
+    font-size: 18px;
+    font-weight: $weight-bold;
+    color: $medium-grey;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+}
+
+.controlsItemActive {
+  button {
+    background: $very-dark-blue;
+    color: $very-light-grey;
+  }
+}
