@@ -3,7 +3,6 @@
 .carousel {
   position: relative;
   width: 100%;
-  overflow: hidden;
 }
 
 .slides {
@@ -110,15 +109,17 @@
 }
 
 .controls {
-  display: flex;
-  gap: 24px;
+  display: none;
+  position: absolute;
+  bottom: 0;
+  left: -80px;
   list-style: none;
-  margin: 24px 0 0 24px;
   padding: 0;
   z-index: 10;
+  background-color: white;
 
-  @media (max-width: $breakpoint-tablet) {
-    display: none;
+  @media (min-width: $breakpoint-desktop) {
+    display: flex;
   }
 }
 
@@ -127,16 +128,7 @@
   list-style: none;
 
   button {
-    width: 80px;
-    height: 80px;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    font-family: $font-family-main;
-    font-size: 18px;
-    font-weight: $weight-bold;
-    color: $medium-grey;
-    transition: background 0.3s ease, color 0.3s ease;
+    @include button-carousel;
   }
 }
 
@@ -144,5 +136,10 @@
   button {
     background: $very-dark-blue;
     color: $very-light-grey;
+    &:hover {
+      background: $very-dark-blue;
+      color: $very-light-grey;
+      cursor: default;
+    }
   }
 }

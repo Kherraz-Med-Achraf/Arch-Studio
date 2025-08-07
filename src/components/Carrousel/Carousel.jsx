@@ -57,6 +57,8 @@ const slides = [
 ];
 
 export default function Carousel() {
+  const slidesWrapperRef = useRef(null);
+  const controlsRef = useRef(null);
   const [current, setCurrent] = useState(0);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const slideRefs = useRef([]);
@@ -68,12 +70,47 @@ export default function Carousel() {
   }, []);
 
   // === Fonctions d’animation ===
+  const initialLoad = useRef(true);
+
   const animateIn = (index) => {
-    gsap.fromTo(
-      slideRefs.current[index],
-      { autoAlpha: 0, x: 100 },
-      { autoAlpha: 1, x: 0, duration: 0.3, ease: "power3.out" }
-    );
+    const currentSlide = slideRefs.current[index];
+    if (!currentSlide) return;
+
+    if (initialLoad.current) {
+      // Animation d'entrée globale (une seule fois)
+      const content = currentSlide.querySelector(`.${styles.slideContent}`);
+      const tl = gsap.timeline({
+        defaults: { ease: "power2.out" },
+        delay: 1.2,
+      });
+
+      tl.fromTo(
+        slidesWrapperRef.current,
+        { autoAlpha: 0, x: 100 },
+        { autoAlpha: 1, x: 0, duration: 2 }
+      )
+        .fromTo(
+          content,
+          { autoAlpha: 0, x: 120 },
+          { autoAlpha: 1, x: 0, duration: 2.5 },
+          "<"
+        )
+        .fromTo(
+          controlsRef.current,
+          { autoAlpha: 0, x: 140 },
+          { autoAlpha: 1, x: 0, duration: 3.5 },
+          "<"
+        );
+
+      initialLoad.current = false;
+    } else {
+      // Animation simple pour les autres slides
+      gsap.fromTo(
+        currentSlide,
+        { autoAlpha: 0, x: 100 },
+        { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }
+      );
+    }
   };
 
   const animateOut = (index, onComplete) => {
@@ -103,7 +140,7 @@ export default function Carousel() {
 
   return (
     <section className={styles.carousel}>
-      <div className={styles.slides}>
+      <div className={styles.slides} ref={slidesWrapperRef}>
         {slides.map((slide, index) => (
           <div
             key={slide.id}
@@ -136,7 +173,7 @@ export default function Carousel() {
       </div>
 
       {/* Contrôles de navigation */}
-      <ul className={styles.controls}>
+      <ul className={styles.controls} ref={controlsRef}>
         {slides.map((_, index) => (
           <li
             key={index}

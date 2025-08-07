@@ -97,3 +97,25 @@ $breakpoint-desktop: 1440px;
     background: $light-grey;
   }
 }
+
+@mixin button-carousel {
+  background: transparent;
+  color: $medium-grey;
+  width: 80px;
+  height: 80px;
+  font-family: $font-family-main;
+  font-weight: $weight-bold;
+  font-size: 18px;
+  line-height: 25px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  &:hover {
+    background: $very-light-grey;
+    color: $medium-grey;
+  }
+  &:active {
+    background: $very-dark-blue;
+    color: $very-light-grey;
+  }
+}
