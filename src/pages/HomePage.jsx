@@ -10,7 +10,12 @@ const HomePage = () => {
 
   return (
     <div className="home">
+      <Carousel />
       <WelcomeHero />
+      <Carousel />
+
+      <Carousel />
+
       <Carousel />
     </div>
   );
