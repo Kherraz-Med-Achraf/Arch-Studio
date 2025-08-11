@@ -59,21 +59,32 @@ const WelcomeHero = ({
           "-=0.4"
         );
 
-      // Parallaxe fluide et subtile pour le bloc info
-      gsap.to(infoRef.current, {
-        yPercent: 30,
-        ease: "none",
-        scrollTrigger: {
-          trigger: rootRef.current,
-          start: "top bottom",
-          end: "bottom top",
-          scrub: 1.2,
-          invalidateOnRefresh: true,
-        },
-      });
+      // Parallaxe du bloc info: désactivée sur mobile (voir règle matchMedia ci-dessous)
 
       // Règles responsive avec matchMedia
       const mm = gsap.matchMedia();
+
+      // Tablet et + : parallaxe fluide et subtile pour le bloc info (désactivée sur mobile)
+      mm.add("(min-width: 768px)", () => {
+        if (!infoRef.current) return undefined;
+
+        const infoParallax = gsap.to(infoRef.current, {
+          yPercent: 30,
+          ease: "none",
+          scrollTrigger: {
+            trigger: rootRef.current,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: 1.2,
+            invalidateOnRefresh: true,
+          },
+        });
+
+        return () => {
+          infoParallax?.scrollTrigger?.kill();
+          infoParallax?.kill();
+        };
+      });
 
       // Tablet et + : parallaxe sophistiquée du grand label
       mm.add("(min-width: 768px)", () => {
