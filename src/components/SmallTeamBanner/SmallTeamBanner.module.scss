@@ -1,0 +1,84 @@
+@use "../../styles/design-system" as *;
+
+.banner {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: 73px;
+  @media (min-width: $breakpoint-tablet) {
+    max-width: 573px;
+    margin: 0 auto 200px auto;
+  }
+  @media (min-width: $breakpoint-desktop) {
+    max-width: 1110px;
+  }
+}
+
+.imageWrapper {
+  display: block;
+  width: 100%;
+
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.50);
+}
+
+.content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 32px;
+  z-index: 1;
+  gap: 23px;
+
+  @media (min-width: $breakpoint-tablet) {
+    padding: 0 58px;
+  }
+  @media (min-width: $breakpoint-desktop) {
+    padding: 0 190px;
+    gap: 27px;
+  }
+}
+
+.title {
+  font-family: $font-family-main;
+  font-size: 48px;
+  line-height: 52px;
+  font-weight: 400;
+  letter-spacing: -1.71px;
+  color: white;
+  max-width: 280px;
+
+  @media (min-width: $breakpoint-tablet) {
+    @include heading-md;
+    max-width: 445px;
+  }
+}
+
+.cta {
+  @include button-primary;
+  font-weight: 400;
+  padding: 25px 32px 22px 35px;
+  display: inline-flex;
+  align-items: center;
+  gap: 24px;
+  @media (min-width: $breakpoint-tablet) {
+    font-weight: $weight-bold;
+  }
+}
+
+.icon {
+  fill: white;
+  width: 24px;
+  height: auto;
+}

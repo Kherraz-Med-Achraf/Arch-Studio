@@ -4,6 +4,7 @@ import viteLogo from "/vite.svg";
 import "../App.css";
 import Carousel from "../components/Carrousel/Carousel";
 import WelcomeHero from "../components/WelcomeHero/WelcomeHero";
+import SmallTeamBanner from "../components/SmallTeamBanner/SmallTeamBanner";
 
 const HomePage = () => {
   const [count, setCount] = useState(0);
@@ -12,6 +13,7 @@ const HomePage = () => {
     <div className="home">
       <Carousel />
       <WelcomeHero />
+      <SmallTeamBanner />
       <Carousel />
 
       <Carousel />
