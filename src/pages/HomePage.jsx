@@ -5,6 +5,7 @@ import "../App.css";
 import Carousel from "../components/Carrousel/Carousel";
 import WelcomeHero from "../components/WelcomeHero/WelcomeHero";
 import SmallTeamBanner from "../components/SmallTeamBanner/SmallTeamBanner";
+import ProjectsGrid from "../components/ProjectsGrid/ProjectsGrid";
 
 const HomePage = () => {
   const [count, setCount] = useState(0);
@@ -14,11 +15,7 @@ const HomePage = () => {
       <Carousel />
       <WelcomeHero />
       <SmallTeamBanner />
-      <Carousel />
-
-      <Carousel />
-
-      <Carousel />
+      <ProjectsGrid variant="home" />
     </div>
   );
 };
