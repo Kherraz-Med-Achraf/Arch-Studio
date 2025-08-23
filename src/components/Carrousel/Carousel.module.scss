@@ -3,6 +3,13 @@
 .carousel {
   position: relative;
   width: 100%;
+  @media (min-width: $breakpoint-tablet) {
+    max-width: 573px;
+    margin: 0 auto;
+  }
+  @media (min-width: $breakpoint-desktop) {
+    max-width: 1110px;
+  }
 }
 
 .slides {

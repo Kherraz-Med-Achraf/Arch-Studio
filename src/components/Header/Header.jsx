@@ -4,7 +4,7 @@ import { gsap } from "gsap";
 import VerticalNavLabel from "../VerticalNavLabel/VerticalNavLabel";
 
 import styles from "./Header.module.scss";
-import logo from "../../assets/logo.svg";
+import Logo from "../../assets/logo.svg?react";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -94,11 +94,11 @@ const Header = () => {
 
   return (
     <>
-      <VerticalNavLabel />
       <header className={styles.header}>
+      <VerticalNavLabel />
         <div className={styles.logo}>
           <NavLink to="/" onClick={handleNavClick} ref={logoRef}>
-            <img src={logo} alt="Arch Studio logo" />
+            <Logo />
           </NavLink>
         </div>
 

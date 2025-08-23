@@ -86,12 +86,12 @@ $breakpoint-desktop: 1440px;
   font-weight: $weight-bold;
   font-size: 18px;
   line-height: 25px;
-  transition: background 0.2s;
   cursor: pointer;
   border: none;
-  transition: all 0.3s ease;
+  transition: all 0.5s ease;
   &:hover {
     background: $dark-grey;
+    transform: translateX(20px);
   }
   &:active {
     background: $light-grey;
@@ -109,7 +109,7 @@ $breakpoint-desktop: 1440px;
   line-height: 25px;
   border: none;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.5s ease;
   &:hover {
     background: $very-light-grey;
     color: $medium-grey;

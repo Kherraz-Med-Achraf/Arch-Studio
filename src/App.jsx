@@ -1,6 +1,7 @@
 import styles from "./App.module.scss";
 import Header from "./components/Header/Header.jsx";
 import { Routes, Route } from "react-router-dom";
+import Footer from "./components/Footer/Footer.jsx";
 
 import HomePage from "./pages/HomePage.jsx";
 import ProjectsPage from "./pages/ProjectsPage.jsx";
@@ -17,6 +18,7 @@ function App() {
         <Route path="/projets" element={<ProjectsPage />} />
         <Route path="/contact" element={<ContactPage />} />
       </Routes>
+      <Footer />
     </div>
   );
 }

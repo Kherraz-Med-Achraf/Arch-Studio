@@ -9,12 +9,15 @@
   width: 100%;
   padding: 24px;
   @media (min-width: 768px) {
+    max-width: 573px;
+    margin: 0 auto;
     padding: 56px 0;
     justify-content: flex-start;
     gap: 79px;
   }
   @media (min-width: 1440px) {
     gap: 95px;
+    max-width: 1110px;
   }
 }
 
@@ -28,13 +31,15 @@
     align-items: center;
   }
 
-  img {
+  svg {
     width: 77px;
     height: 32px;
+    color: $very-dark-blue; /* logo noir dans le header */
+    display: block;
   }
 
   @media (min-width: 768px) {
-    img {
+    svg {
       width: 96px;
       height: 40px;
     }

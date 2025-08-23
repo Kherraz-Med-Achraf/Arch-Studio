@@ -1,12 +1,4 @@
 .app {
   position: relative;
   width: 100%;
-  @media (min-width: 768px) {
-    padding: 0 97px;
-  }
-  @media (min-width: 1440px) {
-    padding: 0;
-    max-width: 1110px;
-    margin: 0 auto;
-  }
 }
