@@ -132,7 +132,7 @@ const Header = () => {
             <li>
               <NavLink
                 ref={(el) => el && navItemRefs.current.push(el)}
-                to="/projets"
+                to="/about"
                 onClick={handleNavClick}
                 className={({ isActive }) =>
                   isActive ? styles.active : undefined

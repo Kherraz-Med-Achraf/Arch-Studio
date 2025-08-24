@@ -6,7 +6,7 @@ import styles from "./VerticalNavLabel.module.scss";
 const routeLabels = {
   "/": "HOME",
   "/portfolio": "PORTFOLIO",
-  "/projets": "PROJETS",
+  "/about": "ABOUT US",
   "/contact": "CONTACT",
 };
 
@@ -32,7 +32,7 @@ export default function VerticalNavLabel() {
       .fromTo(
         lettersRef.current,
         { y: 20, opacity: 0 },
-        { y: 0, opacity: 1, stagger: 0.05 },
+        { y: 0, opacity: 1, transform: "rotate(90deg)", stagger: 0.05 },
         "-=0.8"
       );
   }, [label]);
