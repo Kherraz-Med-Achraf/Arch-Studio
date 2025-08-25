@@ -1,0 +1,84 @@
+@use "../../styles/design-system" as *;
+
+.heritage {
+  padding: 69px 32px 0 32px;
+  margin-bottom: 112px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  @media (min-width: $breakpoint-tablet) {
+    padding: 49px 0 0 0;
+    max-width: 574px;
+    margin: 0 auto 207px auto;
+  }
+  @media (min-width: $breakpoint-desktop) {
+    padding: 0;
+    max-width: 1110px;
+    margin: 0 auto 200px auto;
+    gap: 124px;
+  }
+}
+
+.divider {
+  display: block;
+  position: absolute;
+  width: 65px;
+  height: 1px;
+  background: $light-grey;
+  top: 0;
+  left: 32px;
+  @media (min-width: $breakpoint-tablet) {
+    left: 0;
+  }
+}
+
+.textContent {
+  .title {
+    font-family: $font-family-main;
+    font-size: 48px;
+    line-height: 52px;
+    font-weight: $weight-bold;
+    letter-spacing: -1.71px;
+    color: $very-dark-blue;
+    margin-bottom: 22px;
+    max-width: 200px;
+    @media (min-width: $breakpoint-tablet) {
+      @include heading-md;
+      max-width: 380px;
+    }
+    @media (min-width: $breakpoint-desktop) {
+      margin-bottom: 51px;
+    }
+  }
+
+  .paragraph {
+    @include body-text;
+    color: $dark-grey;
+    margin-bottom: 24px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  @media (min-width: $breakpoint-desktop) {
+    flex: 1;
+    margin-top: auto;
+  }
+}
+
+.imageWrapper {
+  position: relative;
+  width: 540px;
+
+  // Image visible uniquement sur desktop
+  @media (max-width: $breakpoint-desktop) {
+    display: none;
+  }
+
+  .heritageImage {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+}
