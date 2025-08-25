@@ -10,7 +10,7 @@ $very-light-grey: #eeeff4;
 $red: #df5656;
 
 // ========== TYPOGRAPHY ==========
-$font-family-main: 'League Spartan', Arial, Helvetica, sans-serif;
+$font-family-main: "League Spartan", Arial, Helvetica, sans-serif;
 
 $weight-medium: 500;
 $weight-bold: 700;
@@ -35,8 +35,8 @@ $font-size-body: 18px;
 $line-height-body: 24px;
 
 // ========== BREAKPOINTS ==========
-$breakpoint-mobile: 600px;
-$breakpoint-tablet: 900px;
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 1440px;
 
 // ========== MIXINS ==========
 // Headings
@@ -76,16 +76,46 @@ $breakpoint-tablet: 900px;
   letter-spacing: 0;
 }
 
-// ========== EXEMPLE BUTTON ==========
+// ========== BUTTON ==========
 @mixin button-primary {
   background: $very-dark-blue;
-  color: $very-light-grey;
-  border-radius: 6px;
-  padding: 16px 32px;
+  color: white;
+  width: fit-content;
+  padding: 25px 32px 22px 37px;
   font-family: $font-family-main;
   font-weight: $weight-bold;
   font-size: 18px;
-  transition: background 0.2s;
+  line-height: 25px;
   cursor: pointer;
   border: none;
+  transition: all 0.5s ease;
+  &:hover {
+    background: $dark-grey;
+    transform: translateX(20px);
+  }
+  &:active {
+    background: $light-grey;
+  }
+}
+
+@mixin button-carousel {
+  background: transparent;
+  color: $medium-grey;
+  width: 80px;
+  height: 80px;
+  font-family: $font-family-main;
+  font-weight: $weight-bold;
+  font-size: 18px;
+  line-height: 25px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  &:hover {
+    background: $very-light-grey;
+    color: $medium-grey;
+  }
+  &:active {
+    background: $very-dark-blue;
+    color: $very-light-grey;
+  }
 }

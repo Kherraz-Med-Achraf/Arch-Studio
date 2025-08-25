@@ -1,14 +1,21 @@
 import React, { useState, useRef, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { gsap } from "gsap";
+import VerticalNavLabel from "../VerticalNavLabel/VerticalNavLabel";
 
 import styles from "./Header.module.scss";
-import logo from "../assets/logo.svg";
+import Logo from "../../assets/logo.svg?react";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef(null);
   const overlayRef = useRef(null);
+
+  // Refs pour l'animation d'entrée
+  const logoRef = useRef(null);
+  const navItemRefs = useRef([]);
+  // Réinitialiser le tableau de refs à chaque rendu
+  navItemRefs.current = [];
 
   // Animation d'ouverture / fermeture du menu + overlay
   useEffect(() => {
@@ -46,15 +53,52 @@ const Header = () => {
     }
   }, [menuOpen]);
 
+  // Animation d'entrée du header (logo + navigation)
+  useEffect(() => {
+    const tl = gsap.timeline({
+      defaults: { ease: "power2.out" },
+      delay: 0.5, // synchronisation avec VerticalNavLabel
+    });
+
+    if (logoRef.current) {
+      gsap.set(logoRef.current, {
+        y: 40,
+      });
+
+      // Animation vers l'état final
+      tl.to(logoRef.current, {
+        y: 0,
+        duration: 0.6,
+        ease: "power2.out",
+      });
+    }
+
+    if (navItemRefs.current.length) {
+      gsap.set(navItemRefs.current, { y: 40 });
+
+      tl.to(
+        navItemRefs.current,
+        {
+          y: 0,
+          stagger: 0.15,
+          duration: 0.6,
+          ease: "power2.out",
+        },
+        "-=0.5"
+      );
+    }
+  }, []);
+
   // Fermer le menu lors d'un clic sur un lien
   const handleNavClick = () => setMenuOpen(false);
 
   return (
     <>
       <header className={styles.header}>
+      <VerticalNavLabel />
         <div className={styles.logo}>
-          <NavLink to="/" onClick={handleNavClick}>
-            <img src={logo} alt="Arch Studio logo" />
+          <NavLink to="/" onClick={handleNavClick} ref={logoRef}>
+            <Logo />
           </NavLink>
         </div>
 
@@ -74,6 +118,7 @@ const Header = () => {
           <ul className={styles.navList}>
             <li>
               <NavLink
+                ref={(el) => el && navItemRefs.current.push(el)}
                 to="/portfolio"
                 end
                 onClick={handleNavClick}
@@ -86,7 +131,8 @@ const Header = () => {
             </li>
             <li>
               <NavLink
-                to="/projets"
+                ref={(el) => el && navItemRefs.current.push(el)}
+                to="/about"
                 onClick={handleNavClick}
                 className={({ isActive }) =>
                   isActive ? styles.active : undefined
@@ -97,6 +143,7 @@ const Header = () => {
             </li>
             <li>
               <NavLink
+                ref={(el) => el && navItemRefs.current.push(el)}
                 to="/contact"
                 onClick={handleNavClick}
                 className={({ isActive }) =>

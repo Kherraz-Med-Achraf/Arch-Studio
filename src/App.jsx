@@ -1,9 +1,10 @@
 import styles from "./App.module.scss";
-import Header from "./components/Header.jsx";
+import Header from "./components/Header/Header.jsx";
 import { Routes, Route } from "react-router-dom";
+import Footer from "./components/Footer/Footer.jsx";
 
 import HomePage from "./pages/HomePage.jsx";
-import ProjectsPage from "./pages/ProjectsPage.jsx";
+import AboutPage from "./pages/AboutPage.jsx";
 import ContactPage from "./pages/ContactPage.jsx";
 import PortfolioPage from "./pages/PortfolioPage.jsx";
 
@@ -14,9 +15,10 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/portfolio" element={<PortfolioPage />} />
-        <Route path="/projets" element={<ProjectsPage />} />
+        <Route path="/about" element={<AboutPage />} />
         <Route path="/contact" element={<ContactPage />} />
       </Routes>
+      <Footer />
     </div>
   );
 }

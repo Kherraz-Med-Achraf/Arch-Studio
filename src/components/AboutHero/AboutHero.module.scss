@@ -1,0 +1,154 @@
+@use "../../styles/design-system" as *;
+
+.hero {
+  position: relative;
+  width: 100%;
+  margin-bottom: 76px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  @media (min-width: $breakpoint-tablet) {
+    max-width: 573px;
+    margin: 0 auto 200px auto;
+  }
+
+  @media (min-width: $breakpoint-desktop) {
+    max-width: 1110px;
+    margin: 0 auto 200px auto;
+  }
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  picture {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+    z-index: 1;
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    width: calc(100% - 32px);
+    height: 45px;
+    bottom: 0;
+    background: white;
+    z-index: 1;
+    @media (min-width: $breakpoint-tablet) {
+      width: calc(100% - 58px);
+      height: 431px;
+      right: 0;
+    }
+    @media (min-width: $breakpoint-desktop) {
+      width: 793px;
+      left: 482px;
+    }
+  }
+  @media (min-width: $breakpoint-desktop) {
+    width: 635px;
+    height: 720px;
+  }
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 1;
+}
+
+.bigLabel {
+  display: none;
+
+  @media (min-width: $breakpoint-tablet) {
+    display: block;
+    position: absolute;
+    top: 204px;
+    right: 0;
+    font-family: $font-family-main;
+    font-size: 120px;
+    line-height: 200px;
+    font-weight: $weight-bold;
+    letter-spacing: -3px;
+    color: $very-light-grey;
+    z-index: 2;
+  }
+
+  @media (min-width: $breakpoint-desktop) {
+    @include heading-xl;
+  }
+}
+
+.divider {
+  display: none;
+  @media (min-width: $breakpoint-tablet) {
+    display: block;
+    position: absolute;
+    width: 65px;
+    height: 1px;
+    background: $light-grey;
+    top: 377px;
+    left: 118px;
+    z-index: 2;
+  }
+  @media (min-width: $breakpoint-desktop) {
+    display: none;
+  }
+}
+
+.textContent {
+  display: flex;
+  flex-direction: column;
+  gap: 21px;
+
+  @media (min-width: $breakpoint-tablet) {
+    position: absolute;
+    bottom: 0;
+    z-index: 2;
+    gap: 38px;
+    padding-left: 117px;
+  }
+
+  @media (min-width: $breakpoint-desktop) {
+    right: 0;
+    max-width: 446px;
+    gap: 49px;
+    padding-left: 0;
+  }
+}
+
+.title {
+  font-family: $font-family-main;
+  font-size: 48px;
+  line-height: 52px;
+  font-weight: $weight-bold;
+  letter-spacing: -1.2px;
+  margin: 0;
+
+  @media (min-width: $breakpoint-tablet) {
+    @include heading-md;
+  }
+}
+
+.description {
+  @include body-text;
+  margin: 0;
+  color: $dark-grey;
+}

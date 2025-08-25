@@ -1,0 +1,116 @@
+@use "../../styles/design-system" as *;
+
+.hero {
+  width: 100%;
+  position: relative;
+  padding: 69px 32px 0 32px;
+  margin: 72px 0 113px 0;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 33px;
+    width: 65px;
+    height: 1px;
+    background-color: $light-grey;
+  }
+  @media (min-width: $breakpoint-tablet) {
+    padding: 0;
+    width: 100%;
+    max-width: 573px;
+    margin: 59px auto 233px auto;
+    &::before {
+      display: none;
+    }
+  }
+  @media (min-width: $breakpoint-desktop) {
+    max-width: 1110px;
+    margin: 108px auto 200px auto;
+  }
+}
+
+.container {
+  width: 100%;
+  position: relative;
+  padding-top: 0;
+  @media (min-width: $breakpoint-tablet) {
+    padding-top: 87px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+}
+
+.bigLabel {
+  display: none;
+  @media (min-width: $breakpoint-tablet) {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-family: $font-family-main;
+    font-size: 120px;
+    line-height: 200px;
+    font-weight: $weight-bold;
+    letter-spacing: -3px;
+    color: $very-light-grey;
+    z-index: 10;
+    will-change: transform, opacity;
+  }
+  @media (min-width: $breakpoint-desktop) {
+    @include heading-xl;
+  }
+}
+
+.infoCard {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  will-change: transform, opacity;
+  @media (min-width: $breakpoint-desktop) {
+    max-width: 446px;
+    margin-left: 189px;
+    gap: 43px;
+    margin-bottom: 11px;
+  }
+}
+
+.infoTitle {
+  font-family: $font-family-main;
+  font-size: 48px;
+  line-height: 52px;
+  font-weight: $weight-bold;
+  letter-spacing: -1.71px;
+  color: $very-dark-blue;
+  max-width: 311px;
+  will-change: transform, opacity;
+  @media (min-width: $breakpoint-tablet) {
+    @include heading-md;
+    max-width: 446px;
+  }
+}
+
+.infoTextContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.infoText {
+  @include body-text;
+  color: $dark-grey;
+  will-change: transform, opacity;
+}
+
+img {
+  display: none;
+  @media (min-width: $breakpoint-desktop) {
+    display: block;
+    width: 350px;
+    will-change: transform, opacity;
+    transform-origin: center;
+    backface-visibility: hidden;
+  }
+}

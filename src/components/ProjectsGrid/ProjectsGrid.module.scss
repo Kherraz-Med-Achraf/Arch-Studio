@@ -1,0 +1,149 @@
+@use "../../styles/design-system" as *;
+
+.wrapper {
+  width: 100%;
+  padding: 0 32px;
+  margin-bottom: 132px;
+
+  @media (min-width: $breakpoint-tablet) {
+    max-width: 573px;
+    padding: 0;
+    margin: 0 auto 132px auto;
+  }
+  @media (min-width: $breakpoint-desktop) {
+    max-width: 1110px;
+    padding: 0;
+    margin: 0 auto 132px auto;
+  }
+}
+
+.headerRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 43px;
+  @media (min-width: $breakpoint-tablet) {
+    margin-bottom: 85px;
+  }
+  @media (min-width: $breakpoint-desktop) {
+    margin-bottom: 64px;
+  }
+}
+
+.title {
+  font-family: $font-family-main;
+  font-weight: $weight-bold;
+  font-size: 48px;
+  line-height: 52px;
+  letter-spacing: -1.71px;
+  color: $very-dark-blue;
+
+  @media (min-width: $breakpoint-tablet) {
+    @include heading-md;
+  }
+}
+
+.ctaButton {
+  @include button-primary;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.icon {
+  fill: white;
+  width: 24px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+
+  @media (min-width: $breakpoint-desktop) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+}
+
+.card {
+  position: relative;
+  overflow: hidden;
+  cursor: default;
+  outline: none;
+  transition: transform 0.5s ease;
+
+  &[role="button"] {
+    cursor: pointer;
+  }
+
+  &:hover {
+    transform: translateY(-20px);
+  }
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.5) 100%
+  );
+}
+
+.content {
+  position: absolute;
+  left: 24px;
+  bottom: 23px;
+  color: white;
+}
+
+.cardTitle {
+  @include heading-sm;
+}
+
+.cardSubtitle {
+  @include body-text;
+}
+
+.indexNumber {
+  position: absolute;
+  @include heading-xl;
+  color: rgba(255, 255, 255, 0.5);
+  pointer-events: none;
+  user-select: none;
+  display: none;
+
+  @media (min-width: $breakpoint-tablet) {
+    display: block;
+    right: 16px;
+    top: 29px;
+  }
+  @media (min-width: $breakpoint-desktop) {
+    right: -16px;
+    top: 45px;
+  }
+}
+
+.mobileCta {
+  margin-top: 24px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.ctaButtonMobile {
+  @include button-primary;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  width: 100%;
+}
