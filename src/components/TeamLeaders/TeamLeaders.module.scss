@@ -1,0 +1,101 @@
+@use "../../styles/design-system" as *;
+
+.teamLeaders {
+  padding: 0 32px;
+
+  @media (min-width: $breakpoint-tablet) {
+    max-width: 573px;
+    margin: 0 auto;
+    padding-bottom: 200px;
+  }
+
+  @media (min-width: $breakpoint-desktop) {
+    max-width: 1110px;
+    padding: 0 0 200px 0;
+  }
+}
+
+.title {
+  font-family: $font-family-main;
+  font-size: 48px;
+  line-height: 52px;
+  font-weight: $weight-bold;
+  letter-spacing: -1.71px;
+  color: $very-dark-blue;
+  margin-bottom: 55px;
+  max-width: 200px;
+
+  @media (min-width: $breakpoint-tablet) {
+    @include heading-md;
+    margin-bottom: 58px;
+  }
+
+  @media (min-width: $breakpoint-desktop) {
+    margin-bottom: 80px;
+  }
+}
+
+.leadersGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 79px;
+
+  @media (min-width: $breakpoint-tablet) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 103px 11px;
+  }
+
+  @media (min-width: $breakpoint-desktop) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 63px 30px;
+  }
+}
+
+.leaderCard {
+  display: flex;
+  align-items: center;
+  gap: 23px;
+
+  @media (min-width: $breakpoint-tablet) {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+  }
+}
+
+.avatarWrapper {
+  flex-shrink: 0;
+
+  .avatar {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+
+    @media (min-width: $breakpoint-tablet) {
+      width: 250px;
+      height: 284px;
+    }
+  }
+}
+
+.leaderInfo {
+  .leaderName {
+    font-family: $font-family-main;
+    font-size: 32px;
+    line-height: 40px;
+    font-weight: $weight-bold;
+    color: $very-dark-blue;
+    margin-bottom: 2px;
+
+    @media (min-width: $breakpoint-tablet) {
+      margin-bottom: 8px;
+    }
+  }
+
+  .leaderTitle {
+    @include body-text;
+    color: $dark-grey;
+    margin: 0;
+  }
+}
