@@ -58,6 +58,7 @@
     }
     @media (min-width: $breakpoint-desktop) {
       width: 793px;
+      height: 503px;
       left: 482px;
     }
   }
@@ -93,6 +94,7 @@
 
   @media (min-width: $breakpoint-desktop) {
     @include heading-xl;
+    top: 130px;
   }
 }
 
@@ -109,7 +111,9 @@
     z-index: 2;
   }
   @media (min-width: $breakpoint-desktop) {
-    display: none;
+    top: 377px;
+    right: 380px;
+    left: unset;
   }
 }
 
@@ -131,7 +135,8 @@
     right: 0;
     max-width: 446px;
     gap: 49px;
-    padding-left: 0;
+    padding: 0;
+
   }
 }
 

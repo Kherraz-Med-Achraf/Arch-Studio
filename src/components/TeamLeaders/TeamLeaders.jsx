@@ -7,6 +7,10 @@ import avatarThompson from "../../assets/about/desktop/avatar-thompson.jpg";
 import avatarJackson from "../../assets/about/desktop/avatar-jackson.jpg";
 import avatarMaria from "../../assets/about/desktop/avatar-maria.jpg";
 
+// Import des icônes sociales
+import iconLinkedIn from "../../assets/icons/icon-linkedin.svg";
+import iconTwitter from "../../assets/icons/icon-twitter.svg";
+
 const TeamLeaders = () => {
   const leaders = [
     {
@@ -48,6 +52,30 @@ const TeamLeaders = () => {
                 alt={`Portrait de ${leader.name}`}
                 className={styles.avatar}
               />
+              <div className={styles.socialOverlay}>
+                <a
+                  href="#"
+                  className={styles.socialLink}
+                  aria-label={`LinkedIn de ${leader.name}`}
+                >
+                  <img
+                    src={iconLinkedIn}
+                    alt="LinkedIn"
+                    className={styles.socialIcon}
+                  />
+                </a>
+                <a
+                  href="#"
+                  className={styles.socialLink}
+                  aria-label={`Twitter de ${leader.name}`}
+                >
+                  <img
+                    src={iconTwitter}
+                    alt="Twitter"
+                    className={styles.socialIcon}
+                  />
+                </a>
+              </div>
             </div>
             <div className={styles.leaderInfo}>
               <h3 className={styles.leaderName}>{leader.name}</h3>
