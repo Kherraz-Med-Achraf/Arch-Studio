@@ -21,10 +21,28 @@ const ContactPage = () => {
       "We'd love to hear more about your project. Please, leave a message below or give us a call. We have two offices, one in Texas and one in Tennessee. If you find yourself nearby, come say hello!",
   };
 
+  // Données des bureaux partagées entre ContactDetails et Map
+  const offices = [
+    {
+      id: "main",
+      title: "Main Office",
+      email: "archone@mail.com",
+      address: "1892 Chenoweth Drive TN",
+      phone: "123-456-3451",
+    },
+    {
+      id: "office2",
+      title: "Office II",
+      email: "archtwo@mail.com",
+      address: "3399 Wines Lane TX",
+      phone: "832-123-4321",
+    },
+  ];
+
   return (
     <section className="contact-page">
       <PageHero {...contactHeroData} />
-      <ContactDetails />
+      <ContactDetails offices={offices} />
     </section>
   );
 };

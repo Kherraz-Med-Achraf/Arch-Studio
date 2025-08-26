@@ -7,12 +7,15 @@
   @media (min-width: $breakpoint-tablet) {
     max-width: 573px;
     margin: 0 auto;
-    padding: 0 0 200px 0;
+    padding: 69px 0 226px 0;
   }
 
   @media (min-width: $breakpoint-desktop) {
     max-width: 1110px;
-    padding: 0 0 159px 0;
+    padding: 69px 0 199px 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 30px;
   }
 }
 
@@ -44,16 +47,16 @@
   letter-spacing: -1.71px;
   color: $very-dark-blue;
   margin-bottom: 40px;
+  max-width: 151px;
 
   @media (min-width: $breakpoint-tablet) {
     @include heading-md;
-    margin-top: 104px;
-    margin-bottom: 55px;
+    margin-bottom: 42px;
+    max-width: 350px;
   }
 
   @media (min-width: $breakpoint-desktop) {
-    margin-top: 200px;
-    margin-bottom: 80px;
+    margin-bottom: 0;
   }
 }
 
@@ -63,7 +66,7 @@
   gap: 40px;
 
   @media (min-width: $breakpoint-tablet) {
-    gap: 48px;
+    gap: 43px;
   }
 
   @media (min-width: $breakpoint-desktop) {
@@ -76,14 +79,9 @@
 .officeCard {
   display: flex;
   flex-direction: column;
-
-  @media (min-width: $breakpoint-tablet) {
-    gap: 24px;
-  }
-
+  position: relative;
   @media (min-width: $breakpoint-desktop) {
-    flex: 1;
-    max-width: 350px;
+    width: 350px;
   }
 }
 
@@ -94,16 +92,18 @@
   font-weight: $weight-bold;
   color: $dark-grey;
   margin-bottom: 14px;
-
-  @media (min-width: $breakpoint-tablet) {
-    font-size: 20px;
-  }
 }
 
 .contactInfo {
   display: flex;
   flex-direction: column;
   margin-bottom: 43px;
+  @media (min-width: $breakpoint-tablet) {
+    margin-bottom: 0;
+  }
+  @media (min-width: $breakpoint-desktop) {
+    margin-bottom: 59px;
+  }
 }
 
 .contactItem {
@@ -125,14 +125,27 @@
   border: none;
   cursor: pointer;
   transition: all 0.3s ease;
+  @media (min-width: $breakpoint-tablet) {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
+  @media (min-width: $breakpoint-desktop) {
+    position: relative;
+  }
+  transition: transform 0.5s ease;
+  &:hover {
+    transform: translateX(10px);
+    .arrowIcon {
+      transform: translateX(15px);
+    }
+  }
 }
 
 .arrowIcon {
   width: 24px;
   height: auto;
   transition: transform 0.3s ease;
-  fill: black;
-  img {
-    display: unset;
-  }
+  fill: $very-dark-blue;
+  display: block;
 }
