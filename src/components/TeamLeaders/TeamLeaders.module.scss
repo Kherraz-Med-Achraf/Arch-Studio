@@ -2,16 +2,19 @@
 
 .teamLeaders {
   padding: 0 32px;
+  margin-bottom: 171px;
 
   @media (min-width: $breakpoint-tablet) {
     max-width: 573px;
-    margin: 0 auto;
-    padding-bottom: 200px;
+    margin: 0 auto 200px auto;
+    padding: 0;
   }
 
   @media (min-width: $breakpoint-desktop) {
     max-width: 1110px;
-    padding: 0 0 200px 0;
+    margin: 0 auto 159px auto;
+    display: flex;
+    justify-content: space-between;
   }
 }
 
@@ -27,75 +30,67 @@
 
   @media (min-width: $breakpoint-tablet) {
     @include heading-md;
-    margin-bottom: 58px;
-  }
-
-  @media (min-width: $breakpoint-desktop) {
-    margin-bottom: 80px;
+    margin-bottom: 49px;
   }
 }
 
 .leadersGrid {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   gap: 79px;
 
   @media (min-width: $breakpoint-tablet) {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 103px 11px;
+    gap:  103px 11px;
   }
 
   @media (min-width: $breakpoint-desktop) {
-    grid-template-columns: repeat(2, 1fr);
+    max-width: 730px;
+    justify-content: flex-end;
     gap: 63px 30px;
   }
 }
 
 .leaderCard {
   display: flex;
-  align-items: center;
-  gap: 23px;
-
-  @media (min-width: $breakpoint-tablet) {
-    flex-direction: column;
-    text-align: center;
-    gap: 15px;
-  }
+  flex-direction: column;
+  gap: 15px;
 }
 
 .avatarWrapper {
+  width: 100%;
+  height: auto;
   flex-shrink: 0;
-
   .avatar {
-    width: 80px;
-    height: 80px;
+    width: 100%;
+    max-width: 311px;
+    min-height: 284px;
+    display: block;
     object-fit: cover;
 
     @media (min-width: $breakpoint-tablet) {
-      width: 250px;
-      height: 284px;
+      max-width: unset;
+      min-height: unset;
+      width: 280px;
+      height: 256px;
+    }
+
+    @media (min-width: $breakpoint-desktop) {
+      width: 350px;
+      height: 320px;
     }
   }
 }
 
 .leaderInfo {
   .leaderName {
-    font-family: $font-family-main;
-    font-size: 32px;
-    line-height: 40px;
-    font-weight: $weight-bold;
+    @include heading-sm;
     color: $very-dark-blue;
-    margin-bottom: 2px;
-
-    @media (min-width: $breakpoint-tablet) {
-      margin-bottom: 8px;
-    }
   }
 
   .leaderTitle {
     @include body-text;
-    color: $dark-grey;
+    color: $very-dark-blue;
+    opacity: 0.75;
     margin: 0;
   }
 }
