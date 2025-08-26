@@ -1,0 +1,138 @@
+@use "../../styles/design-system" as *;
+
+.contactDetails {
+  padding: 69px 32px 71px 32px;
+  position: relative;
+
+  @media (min-width: $breakpoint-tablet) {
+    max-width: 573px;
+    margin: 0 auto;
+    padding: 0 0 200px 0;
+  }
+
+  @media (min-width: $breakpoint-desktop) {
+    max-width: 1110px;
+    padding: 0 0 159px 0;
+  }
+}
+
+// Divider copié de PageHero
+.divider {
+  position: absolute;
+  width: 65px;
+  height: 1px;
+  background: $light-grey;
+  top: 0;
+  left: 32px;
+  z-index: 2;
+
+  @media (min-width: $breakpoint-tablet) {
+    top: 0;
+    left: 0;
+  }
+
+  @media (min-width: $breakpoint-desktop) {
+    left: 0;
+  }
+}
+
+.title {
+  font-family: $font-family-main;
+  font-size: 48px;
+  line-height: 52px;
+  font-weight: $weight-bold;
+  letter-spacing: -1.71px;
+  color: $very-dark-blue;
+  margin-bottom: 40px;
+
+  @media (min-width: $breakpoint-tablet) {
+    @include heading-md;
+    margin-top: 104px;
+    margin-bottom: 55px;
+  }
+
+  @media (min-width: $breakpoint-desktop) {
+    margin-top: 200px;
+    margin-bottom: 80px;
+  }
+}
+
+.officesGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  @media (min-width: $breakpoint-tablet) {
+    gap: 48px;
+  }
+
+  @media (min-width: $breakpoint-desktop) {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 30px;
+  }
+}
+
+.officeCard {
+  display: flex;
+  flex-direction: column;
+
+  @media (min-width: $breakpoint-tablet) {
+    gap: 24px;
+  }
+
+  @media (min-width: $breakpoint-desktop) {
+    flex: 1;
+    max-width: 350px;
+  }
+}
+
+.officeTitle {
+  font-family: $font-family-main;
+  font-size: 18px;
+  line-height: 35px;
+  font-weight: $weight-bold;
+  color: $dark-grey;
+  margin-bottom: 14px;
+
+  @media (min-width: $breakpoint-tablet) {
+    font-size: 20px;
+  }
+}
+
+.contactInfo {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 43px;
+}
+
+.contactItem {
+  @include body-text;
+  color: $dark-grey;
+  margin: 0;
+}
+
+.mapButton {
+  font-family: $font-family-main;
+  font-size: 18px;
+  line-height: 25px;
+  font-weight: $weight-bold;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  color: $very-dark-blue;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.arrowIcon {
+  width: 24px;
+  height: auto;
+  transition: transform 0.3s ease;
+  fill: black;
+  img {
+    display: unset;
+  }
+}

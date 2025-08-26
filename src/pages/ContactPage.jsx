@@ -1,5 +1,6 @@
 import React from "react";
 import PageHero from "../components/PageHero/PageHero";
+import ContactDetails from "../components/ContactDetails/ContactDetails";
 
 // Import des images Contact
 import contactImageDesktop from "../assets/contact/desktop/image-hero.jpg";
@@ -23,6 +24,7 @@ const ContactPage = () => {
   return (
     <section className="contact-page">
       <PageHero {...contactHeroData} />
+      <ContactDetails />
     </section>
   );
 };
