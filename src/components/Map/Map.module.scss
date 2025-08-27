@@ -1,0 +1,160 @@
+@use "../../styles/design-system" as *;
+
+.mapContainer {
+  width: 100%;
+  height: 375px;
+  border-radius: 0;
+  overflow: hidden;
+  margin-bottom: 73px;
+  // Neutraliser les transformations CSS héritées qui peuvent causer des tuiles grises sur iOS
+  transform: none !important;
+  filter: none !important;
+  will-change: auto !important;
+
+  // Optimisations tactiles pour mobile
+  @media (max-width: $breakpoint-tablet) {
+    touch-action: manipulation; // Améliorer les interactions tactiles
+    -webkit-touch-callout: none; // Désactiver le menu contextuel sur iOS
+    -webkit-user-select: none; // Empêcher la sélection de texte accidentelle
+    user-select: none;
+
+    // Forcer les événements tactiles à passer à la carte
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: none;
+  }
+
+  @media (min-width: $breakpoint-tablet) {
+    height: 560px;
+    width: 573px;
+    margin: 0 auto 199px auto;
+  }
+
+  @media (min-width: $breakpoint-desktop) {
+    width: 1110px;
+    height: 560px;
+    margin: 0 auto 159px auto;
+  }
+}
+
+.leafletMap {
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  :global(.leaflet-tile) {
+    pointer-events: auto !important;
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+}
+
+// Style pour l'icône personnalisée
+:global(.custom-marker-icon) {
+  transition: transform 0.3s ease;
+  z-index: 1000 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+// Styles pour le popup personnalisé
+:global(.leaflet-popup-content-wrapper) {
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+
+  @media (max-width: $breakpoint-tablet) {
+    max-width: 280px !important;
+    min-width: 280px !important;
+  }
+}
+
+:global(.leaflet-popup-content) {
+  margin: 0;
+  padding: 0;
+
+  @media (max-width: $breakpoint-tablet) {
+    max-width: 280px !important;
+    width: 280px !important;
+  }
+}
+
+// Style pour la pointe du popup
+:global(.leaflet-popup-tip) {
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+// Bouton de fermeture du popup
+:global(.leaflet-popup-close-button) {
+  color: $dark-grey !important;
+  font-size: 18px !important;
+  font-weight: bold !important;
+
+  @media (max-width: $breakpoint-tablet) {
+    font-size: 20px !important;
+    width: 24px !important;
+    height: 24px !important;
+    line-height: 20px !important;
+  }
+
+  &:hover {
+    color: $very-dark-blue !important;
+  }
+}
+
+.popupContent {
+  padding: 20px;
+  min-width: 250px;
+
+  @media (max-width: $breakpoint-tablet) {
+    min-width: 240px;
+    max-width: 240px;
+    padding: 16px;
+    font-size: 14px;
+  }
+}
+
+.popupTitle {
+  font-family: $font-family-main;
+  font-size: 18px;
+  font-weight: $weight-bold;
+  color: $very-dark-blue;
+  margin: 0 0 12px 0;
+  line-height: 1.2;
+
+  @media (max-width: $breakpoint-tablet) {
+    font-size: 16px;
+    margin: 0 0 10px 0;
+  }
+}
+
+.popupDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  @media (max-width: $breakpoint-tablet) {
+    gap: 6px;
+  }
+
+  p {
+    @include body-text;
+    color: $dark-grey;
+    margin: 0;
+    line-height: 1.4;
+
+    @media (max-width: $breakpoint-tablet) {
+      font-size: 13px;
+      line-height: 1.3;
+    }
+
+    strong {
+      color: $very-dark-blue;
+      font-weight: $weight-bold;
+    }
+  }
+}
