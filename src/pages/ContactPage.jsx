@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import PageHero from "../components/PageHero/PageHero";
 import ContactDetails from "../components/ContactDetails/ContactDetails";
+import ContactForm from "../components/ContactForm/ContactForm";
 import Map from "../components/Map/Map";
 
 // Import des images Contact
@@ -63,6 +64,7 @@ const ContactPage = () => {
         selectedOfficeId={selectedOfficeId}
         onMarkerClick={handleMarkerClick}
       />
+      <ContactForm />
     </section>
   );
 };

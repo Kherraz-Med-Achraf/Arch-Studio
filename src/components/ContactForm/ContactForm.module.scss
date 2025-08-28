@@ -1,0 +1,132 @@
+@use "../../styles/design-system" as *;
+
+.contactForm {
+  padding: 0 32px 80px 32px;
+  margin-bottom: 132px;
+  position: relative;
+  @media (min-width: $breakpoint-tablet) {
+    max-width: 573px;
+    margin: 0 auto 200px auto;
+  }
+  @media (min-width: $breakpoint-desktop) {
+    max-width: 1110px;
+    margin: 0 auto 153px auto;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.title {
+  font-family: $font-family-main;
+  font-size: 48px;
+  font-weight: $weight-bold;
+  color: $very-dark-blue;
+  line-height: 52px;
+  letter-spacing: -1.71px;
+  margin-bottom: 42px;
+  max-width: 151px;
+  @media (min-width: $breakpoint-tablet) {
+    max-width: unset;
+    @include heading-md;
+  }
+  @media (min-width: $breakpoint-desktop) {
+    width: 350px;
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 43px;
+  @media (min-width: $breakpoint-desktop) {
+    flex: 1;
+  }
+}
+
+.inputGroup {
+  position: relative;
+  transition: all 0.3s ease;
+  &.error {
+    .input,
+    .textarea {
+      color: $red;
+      border-bottom: 1px solid $red;
+      &::placeholder {
+        color: $red;
+      }
+    }
+  }
+}
+
+.errorMessage {
+  position: absolute;
+  bottom: 16px;
+  right: 0;
+  font-family: $font-family-main;
+  font-size: 18px;
+  font-weight: $weight-bold;
+  color: $red;
+  letter-spacing: -0.28px;
+}
+
+.input,
+.textarea {
+  width: 100%;
+  padding: 0 0 22px 34.49px;
+  border: none;
+  background: transparent;
+  font-family: $font-family-main;
+  font-size: 20px;
+  font-weight: $weight-bold;
+  color: $very-dark-blue;
+  outline: none;
+  transition: all 0.3s ease;
+  border-bottom: 1px solid $very-dark-blue;
+
+  &::placeholder {
+    color: $light-grey;
+    font-family: $font-family-main;
+    font-size: 20px;
+    font-weight: $weight-medium;
+  }
+
+  &:focus {
+    border-bottom: 3px solid $very-dark-blue;
+  }
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 92px;
+  font-family: inherit;
+}
+
+.submitButton {
+  position: absolute;
+  right: 32px;
+  bottom: 0;
+  width: 80px;
+  height: 80px;
+  background-color: $very-dark-blue;
+  color: white;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+
+  &:hover {
+    background-color: $dark-grey;
+  }
+
+  &:active {
+    background-color: $light-grey;
+  }
+
+  span {
+    display: block;
+  }
+}
