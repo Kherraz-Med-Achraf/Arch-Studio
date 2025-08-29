@@ -72,6 +72,7 @@
   display: inline-flex;
   align-items: center;
   gap: 24px;
+  transition: unset;
   @media (min-width: $breakpoint-tablet) {
     font-weight: $weight-bold;
   }

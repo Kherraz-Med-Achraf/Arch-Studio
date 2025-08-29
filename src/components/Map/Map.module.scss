@@ -6,10 +6,13 @@
   border-radius: 0;
   overflow: hidden;
   margin-bottom: 73px;
-  // Neutraliser les transformations CSS héritées qui peuvent causer des tuiles grises sur iOS
-  transform: none !important;
-  filter: none !important;
-  will-change: auto !important;
+  // Support pour les animations 3D GSAP
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  // Les transformations GSAP remplaceront ces valeurs
+  transform: none;
+  filter: none;
+  will-change: transform, opacity;
 
   // Optimisations tactiles pour mobile
   @media (max-width: $breakpoint-tablet) {
@@ -50,14 +53,20 @@
 
 // Style pour l'icône personnalisée
 :global(.custom-marker-icon) {
-  transition: transform 0.3s ease;
   z-index: 1000 !important;
   opacity: 1 !important;
   visibility: visible !important;
   display: block !important;
+  will-change: transform;
+  transform-origin: center bottom;
+
+  // Transitions pour les hovers seulement (GSAP gère les animations d'entrée)
+  transition: none;
 
   &:hover {
-    transform: scale(1.1);
+    // Utiliser GSAP pour les hovers aussi pour éviter les conflits
+    transition: transform 0.2s ease;
+    transform: scale(1.1) !important;
   }
 }
 

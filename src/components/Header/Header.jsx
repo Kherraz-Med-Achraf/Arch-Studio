@@ -95,7 +95,7 @@ const Header = () => {
   return (
     <>
       <header className={styles.header}>
-      <VerticalNavLabel />
+        <VerticalNavLabel />
         <div className={styles.logo}>
           <NavLink to="/" onClick={handleNavClick} ref={logoRef}>
             <Logo />

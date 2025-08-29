@@ -45,6 +45,7 @@
 
 .ctaButton {
   @include button-primary;
+  transition: unset;
   display: flex;
   align-items: center;
   gap: 24px;
@@ -71,15 +72,12 @@
   overflow: hidden;
   cursor: default;
   outline: none;
-  transition: transform 0.5s ease;
 
   &[role="button"] {
     cursor: pointer;
   }
 
-  &:hover {
-    transform: translateY(-20px);
-  }
+  // Hover géré par GSAP dans le JavaScript pour éviter les conflits
 }
 
 .image {

@@ -104,7 +104,8 @@
   justify-content: center;
   gap: 24px;
   text-decoration: none;
-
+  // L'animation hover du button-primary est préservée
+  // GSAP gère seulement l'animation d'entrée initiale
 
   .icon {
     width: 24px;

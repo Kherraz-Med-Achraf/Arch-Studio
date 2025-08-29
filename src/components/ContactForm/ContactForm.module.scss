@@ -45,15 +45,27 @@
 
 .inputGroup {
   position: relative;
-  transition: all 0.3s ease;
+  // Transition gérée par GSAP pour l'animation d'entrée
+  // Transition pour les erreurs seulement
+  // Pour cibler les inputGroup qui contiennent un textarea
+
   &.error {
     .input,
     .textarea {
       color: $red;
       border-bottom: 1px solid $red;
+      transition: all 0.3s ease;
+
       &::placeholder {
         color: $red;
       }
+    }
+  }
+
+  &:has(.textarea) {
+    height: 93px;
+    &:focus-within {
+      height: 95px;
     }
   }
 }
@@ -98,13 +110,13 @@
 .textarea {
   resize: vertical;
   min-height: 92px;
-  font-family: inherit;
+  padding-bottom: 0px;
 }
 
 .submitButton {
   position: absolute;
   right: 32px;
-  bottom: 0;
+  bottom: 2px;
   width: 80px;
   height: 80px;
   background-color: $very-dark-blue;
