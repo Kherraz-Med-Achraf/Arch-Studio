@@ -6,7 +6,7 @@ A modern, fully responsive multi-page website for an architecture studio built w
 
 ## 🌐 Live Demo & Links
 
-- **Live Site**: [https://arch-studio-7zn5.onrender.com/](https://arch-studio-o1v9.onrender.com)
+- **Live Site**: [https://arch-studio-o1v9.onrender.com/](https://arch-studio-o1v9.onrender.com)
 - **Frontend Mentor Challenge**: [Arch Studio Multi-page Website](https://www.frontendmentor.io/challenges/arch-studio-multipage-website-wNIbOFYR6)
 - **Repository**: [GitHub Repository](https://github.com/yourusername/arch-studio)
 
