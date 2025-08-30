@@ -4,7 +4,6 @@ import { Routes, Route } from "react-router-dom";
 import Footer from "./components/Footer/Footer.jsx";
 import useSimplePageTransition from "./hooks/useSimplePageTransition.js";
 import useImagePreloader from "./hooks/useImagePreloader.js";
-import LoadingScreen from "./components/LoadingScreen/LoadingScreen.jsx";
 
 import HomePage from "./pages/HomePage.jsx";
 import AboutPage from "./pages/AboutPage.jsx";
@@ -30,15 +29,18 @@ function App() {
     welcomeImage,
   ];
 
-  const { isLoading, progress } = useImagePreloader(criticalImages);
+  const { isLoading } = useImagePreloader(criticalImages);
+
+  // Ne rien afficher tant que les images ne sont pas chargées
+  if (isLoading) {
+    return null;
+  }
 
   return (
     <div className={styles.app}>
-      <LoadingScreen progress={progress} isVisible={isLoading} />
       <Header />
       <div
         className={`${styles.pageContainer} ${isExiting ? styles.exiting : ""}`}
-        style={{ visibility: isLoading ? "hidden" : "visible" }}
       >
         <Routes location={displayLocation}>
           <Route path="/" element={<HomePage />} />
