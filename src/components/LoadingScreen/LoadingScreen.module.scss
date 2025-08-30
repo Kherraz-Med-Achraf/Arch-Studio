@@ -1,0 +1,78 @@
+@use "../../styles/design-system" as *;
+
+.loadingScreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: $very-light-grey;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+
+  &.hiding {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.logo {
+  color: $very-dark-blue;
+  opacity: 0;
+  animation: fadeInLogo 0.6s ease-out 0.2s forwards;
+}
+
+.progressBar {
+  width: 200px;
+  height: 2px;
+  background: $light-grey;
+  border-radius: 1px;
+  overflow: hidden;
+  opacity: 0;
+  animation: fadeInLogo 0.6s ease-out 0.4s forwards;
+}
+
+.progressFill {
+  height: 100%;
+  background: $very-dark-blue;
+  border-radius: 1px;
+  transition: width 0.3s ease-out;
+  transform-origin: left;
+}
+
+.progressText {
+  @include body-text;
+  font-size: 14px;
+  color: $medium-grey;
+  margin: 0;
+  opacity: 0;
+  animation: fadeInLogo 0.6s ease-out 0.6s forwards;
+}
+
+@keyframes fadeInLogo {
+  to {
+    opacity: 1;
+  }
+}
+
+@media (max-width: $breakpoint-tablet) {
+  .content {
+    gap: 1.5rem;
+  }
+
+  .progressBar {
+    width: 150px;
+  }
+}

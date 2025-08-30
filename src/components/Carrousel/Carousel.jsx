@@ -73,10 +73,40 @@ export default function Carousel() {
 
   // === Fonctions d’animation ===
   const initialLoad = useRef(true);
+  const [imagesLoaded, setImagesLoaded] = useState(false);
+
+  // Précharger les images du carousel
+  useEffect(() => {
+    const imagesToPreload = slides.flatMap((slide) => [
+      slide.img,
+      slide.imgTablet,
+      slide.imgMobile,
+    ]);
+
+    let loadedCount = 0;
+    const totalImages = imagesToPreload.length;
+
+    imagesToPreload.forEach((src) => {
+      const img = new Image();
+      img.onload = () => {
+        loadedCount++;
+        if (loadedCount === totalImages) {
+          setImagesLoaded(true);
+        }
+      };
+      img.onerror = () => {
+        loadedCount++;
+        if (loadedCount === totalImages) {
+          setImagesLoaded(true);
+        }
+      };
+      img.src = src;
+    });
+  }, []);
 
   const animateIn = (index) => {
     const currentSlide = slideRefs.current[index];
-    if (!currentSlide) return;
+    if (!currentSlide || !imagesLoaded) return;
 
     const isMobile = window.innerWidth < 768;
 
@@ -142,10 +172,12 @@ export default function Carousel() {
     });
   };
 
-  // Lance l’animation d’entrée à chaque changement de slide
+  // Lance l'animation d'entrée à chaque changement de slide
   useEffect(() => {
-    animateIn(current);
-  }, [current]);
+    if (imagesLoaded) {
+      animateIn(current);
+    }
+  }, [current, imagesLoaded]);
 
   // Gestion du changement de slide (désactivé sur mobile)
   const handleChange = (index) => {
@@ -158,7 +190,9 @@ export default function Carousel() {
   };
 
   return (
-    <section className={styles.carousel}>
+    <section
+      className={`${styles.carousel} ${!imagesLoaded ? "gsap-fade-in" : ""}`}
+    >
       <div className={styles.slides} ref={slidesWrapperRef}>
         {slides.map((slide, index) => (
           <div

@@ -1,0 +1,37 @@
+# Headers pour optimiser le cache en production
+
+# Assets statiques - Cache long terme
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Images - Cache moyen terme  
+*.jpg
+  Cache-Control: public, max-age=86400
+*.jpeg
+  Cache-Control: public, max-age=86400
+*.png
+  Cache-Control: public, max-age=86400
+*.svg
+  Cache-Control: public, max-age=86400
+
+# Fonts - Cache long terme
+*.woff2
+  Cache-Control: public, max-age=31536000, immutable
+*.woff
+  Cache-Control: public, max-age=31536000, immutable
+
+# HTML - Cache court terme
+*.html
+  Cache-Control: public, max-age=3600
+
+# CSS/JS - Cache avec revalidation
+*.css
+  Cache-Control: public, max-age=86400, must-revalidate
+*.js
+  Cache-Control: public, max-age=86400, must-revalidate
+
+# Manifest et service worker
+manifest.json
+  Cache-Control: no-cache
+sw.js
+  Cache-Control: no-cache

@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useRef } from "react";
+import React, { useLayoutEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import styles from "./WelcomeHero.module.scss";
@@ -18,8 +18,31 @@ const WelcomeHero = ({
   const imageRef = useRef(null);
   const titleRef = useRef(null);
   const paragraphsRef = useRef([]);
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
+  const [isReady, setIsReady] = useState(false);
+
+  // Précharger l'image et préparer l'état initial
+  useLayoutEffect(() => {
+    // Précharger l'image
+    const img = new Image();
+    img.onload = () => {
+      setIsImageLoaded(true);
+    };
+    img.src = imageSrc;
+
+    // Délai pour permettre au DOM de se stabiliser
+    const readyTimer = setTimeout(() => {
+      setIsReady(true);
+    }, 50);
+
+    return () => {
+      clearTimeout(readyTimer);
+    };
+  }, [imageSrc]);
 
   useLayoutEffect(() => {
+    if (!isReady || !isImageLoaded) return;
+
     gsap.registerPlugin(ScrollTrigger);
 
     const ctx = gsap.context(() => {
@@ -182,23 +205,31 @@ const WelcomeHero = ({
     }, rootRef);
 
     return () => ctx.revert();
-  }, []);
+  }, [isReady, isImageLoaded]);
 
   return (
-    <section className={styles.hero} ref={rootRef}>
+    <section
+      className={`${styles.hero} ${!isReady ? "gsap-fade-in" : ""}`}
+      ref={rootRef}
+    >
       <div className={styles.container}>
         <div className={styles.bigLabel} ref={labelRef} aria-hidden>
           {label}
         </div>
         <div className={styles.infoCard} ref={infoRef}>
-          <h1 className={styles.infoTitle} ref={titleRef}>
+          <h1
+            className={`${styles.infoTitle} ${!isReady ? "gsap-fade-in" : ""}`}
+            ref={titleRef}
+          >
             {infoTitle}
           </h1>
           <div className={styles.infoTextContainer}>
             {infoDescription.split("\n\n").map((para, idx) => (
               <p
                 key={idx}
-                className={styles.infoText}
+                className={`${styles.infoText} ${
+                  !isReady ? "gsap-fade-in" : ""
+                }`}
                 ref={(el) => (paragraphsRef.current[idx] = el)}
               >
                 {para}
@@ -206,7 +237,13 @@ const WelcomeHero = ({
             ))}
           </div>
         </div>
-        <img src={imageSrc} ref={imageRef} alt="Building facade" />
+        <img
+          src={imageSrc}
+          ref={imageRef}
+          alt="Building facade"
+          style={{ opacity: isImageLoaded ? 1 : 0 }}
+          onLoad={() => setIsImageLoaded(true)}
+        />
       </div>
     </section>
   );
