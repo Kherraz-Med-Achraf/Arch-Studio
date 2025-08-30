@@ -85,7 +85,7 @@ export default function Carousel() {
       const content = currentSlide.querySelector(`.${styles.slideContent}`);
       const tl = gsap.timeline({
         defaults: { ease: "power2.out" },
-        delay: isMobile ? 0.8 : 1.2, // Délai réduit sur mobile
+        delay: 0.3,
       });
 
       // Valeurs réduites pour mobile
@@ -183,7 +183,10 @@ export default function Carousel() {
             <div className={styles.slideContent}>
               <h2 className={styles.slideHeader}>{slide.header}</h2>
               <p className={styles.slideText}>{slide.text}</p>
-              <button className={styles.slideButton} onClick={() => navigate(`/portfolio`)}>
+              <button
+                className={styles.slideButton}
+                onClick={() => navigate(`/portfolio`)}
+              >
                 {slide.cta} <IconArrow className={styles.icon} />
               </button>
             </div>

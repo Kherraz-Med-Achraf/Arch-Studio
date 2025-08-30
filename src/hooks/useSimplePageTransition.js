@@ -7,6 +7,11 @@ const useSimplePageTransition = () => {
   const [isExiting, setIsExiting] = useState(false);
 
   useEffect(() => {
+    // Scroll vers le haut au montage initial
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     if (location.pathname !== displayLocation.pathname) {
       // Démarrer l'animation de sortie
       setIsExiting(true);
@@ -15,7 +20,9 @@ const useSimplePageTransition = () => {
       const timer = setTimeout(() => {
         setDisplayLocation(location);
         setIsExiting(false);
-      }, 600);
+        // Scroll vers le haut de la page
+        window.scrollTo(0, 0);
+      }, 200);
 
       return () => clearTimeout(timer);
     }
