@@ -87,54 +87,62 @@ export default function ProjectsGrid({ variant = "home" }) {
           );
       }
 
-      // Animation des cartes via timeline globale (sans ScrollTrigger)
+      // Animation des cartes avec ScrollTrigger individuel par carte
       const validCards = cardsRef.current.filter((card) => card !== null);
 
       if (validCards.length > 0) {
         const mm = gsap.matchMedia();
 
-        // Mobile : animations simplifiées avec timeline globale
+        // Mobile : animations avec ScrollTrigger par carte
         mm.add("(max-width: 767px)", () => {
-          gsap.set(validCards, {
-            autoAlpha: 0,
-            y: 30, // Valeur réduite
-            scale: 0.95, // Scale minimal
-          });
+          validCards.forEach((card) => {
+            gsap.set(card, {
+              autoAlpha: 0,
+              y: 30,
+              scale: 0.95,
+            });
 
-          const tl = gsap.timeline({ delay: 2 });
-          tl.to(validCards, {
-            y: 0,
-            autoAlpha: 1,
-            scale: 1,
-            duration: 0.6, // Durée réduite
-            ease: "power2.out", // Ease plus simple
-            stagger: 0.05, // Léger effet cascade
+            gsap.to(card, {
+              y: 0,
+              autoAlpha: 1,
+              scale: 1,
+              duration: 0.6,
+              ease: "power2.out",
+              scrollTrigger: {
+                trigger: card,
+                start: "top 90%",
+                toggleActions: "play none none none",
+                invalidateOnRefresh: true,
+              },
+            });
           });
-
-          return () => tl.kill();
         });
 
-        // Tablet et Desktop : animations complètes avec timeline globale
+        // Tablet et Desktop : animations avec ScrollTrigger par carte
         mm.add("(min-width: 768px)", () => {
-          gsap.set(validCards, {
-            autoAlpha: 0,
-            y: 60,
-            scale: 0.9,
-            rotationY: 15,
-          });
+          validCards.forEach((card) => {
+            gsap.set(card, {
+              autoAlpha: 0,
+              y: 60,
+              scale: 0.9,
+              rotationY: 15,
+            });
 
-          const tl = gsap.timeline({ delay: 1 });
-          tl.to(validCards, {
-            y: 0,
-            autoAlpha: 1,
-            scale: 1,
-            rotationY: 0,
-            duration: 0.8,
-            ease: "back.out(1.2)",
-            stagger: 0.1, // Effet cascade
+            gsap.to(card, {
+              y: 0,
+              autoAlpha: 1,
+              scale: 1,
+              rotationY: 0,
+              duration: 0.8,
+              ease: "back.out(1.2)",
+              scrollTrigger: {
+                trigger: card,
+                start: "top 85%",
+                toggleActions: "play none none none",
+                invalidateOnRefresh: true,
+              },
+            });
           });
-
-          return () => tl.kill();
         });
       }
     }, rootRef);

@@ -12,7 +12,7 @@
   }
   @media (min-width: $breakpoint-desktop) {
     max-width: 1110px;
-    padding: 0;
+    padding: 20px 0 0 0;
     margin: 0 auto 132px auto;
   }
 }
@@ -72,7 +72,6 @@
   overflow: hidden;
   cursor: default;
   outline: none;
-
   &[role="button"] {
     cursor: pointer;
   }
