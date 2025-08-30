@@ -6,7 +6,7 @@ A modern, fully responsive multi-page website for an architecture studio built w
 
 ## 🌐 Live Demo & Links
 
-- **Live Site**: [https://arch-studio-7zn5.onrender.com/](https://arch-studio-7zn5.onrender.com/)
+- **Live Site**: [https://arch-studio-7zn5.onrender.com/](https://arch-studio-b8rt.onrender.com)
 - **Frontend Mentor Challenge**: [Arch Studio Multi-page Website](https://www.frontendmentor.io/challenges/arch-studio-multipage-website-wNIbOFYR6)
 - **Repository**: [GitHub Repository](https://github.com/yourusername/arch-studio)
 
@@ -154,7 +154,6 @@ src/
 - **Touch/swipe support** for mobile devices
 - **Responsive image handling** for all screen sizes
 
-
 ### Interactive Map Integration
 
 - **Real locations** displayed using OpenStreetMap
@@ -183,7 +182,6 @@ Working with GSAP taught me how to create professional-grade animations:
 - **Mobile-first CSS** approach
 - **Fluid typography** using clamp() functions
 - **Container queries** for component-based responsive design
-
 
 ## 🎨 Design System
 
