@@ -56,7 +56,7 @@
   }
 
   @media (min-width: $breakpoint-desktop) {
-    margin-bottom: 0;
+    margin-bottom: 43px;
   }
 }
 
@@ -94,7 +94,7 @@
   margin-bottom: 14px;
 }
 
-.contactInfo {
+.contactInfoDetails {
   display: flex;
   flex-direction: column;
   margin-bottom: 43px;
@@ -125,19 +125,30 @@
   border: none;
   cursor: pointer;
   transition: all 0.3s ease;
+  padding: 8px 0; // Ajouter un peu de padding pour améliorer la zone cliquable
+
   @media (min-width: $breakpoint-tablet) {
     position: absolute;
     right: 0;
     bottom: 0;
   }
+
   @media (min-width: $breakpoint-desktop) {
     position: relative;
   }
-  transition: transform 0.5s ease;
+
   &:hover {
     transform: translateX(10px);
+
     .arrowIcon {
       transform: translateX(15px);
+    }
+  }
+
+  &:active {
+    transform: translateX(5px);
+    .arrowIcon {
+      transform: translateX(10px);
     }
   }
 }

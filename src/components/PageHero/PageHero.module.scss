@@ -48,7 +48,7 @@
     position: absolute;
     width: calc(100% - 32px);
     height: 45px;
-    bottom: 0;
+    bottom: -1px;
     background: white;
     z-index: 1;
     @media (min-width: $breakpoint-tablet) {

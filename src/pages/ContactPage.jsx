@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import PageHero from "../components/PageHero/PageHero";
 import ContactDetails from "../components/ContactDetails/ContactDetails";
+import ContactForm from "../components/ContactForm/ContactForm";
+import Map from "../components/Map/Map";
 
 // Import des images Contact
 import contactImageDesktop from "../assets/contact/desktop/image-hero.jpg";
@@ -8,6 +10,8 @@ import contactImageTablet from "../assets/contact/tablet/image-hero.jpg";
 import contactImageMobile from "../assets/contact/mobile/image-hero.jpg";
 
 const ContactPage = () => {
+  const [selectedOfficeId, setSelectedOfficeId] = useState(null);
+
   const contactHeroData = {
     images: {
       desktop: contactImageDesktop,
@@ -39,10 +43,28 @@ const ContactPage = () => {
     },
   ];
 
+  const handleViewOnMap = (officeId) => {
+    setSelectedOfficeId(officeId);
+  };
+
+  const handleMarkerClick = (officeId) => {
+    setSelectedOfficeId(officeId);
+  };
+
   return (
     <section className="contact-page">
       <PageHero {...contactHeroData} />
-      <ContactDetails offices={offices} />
+      <ContactDetails
+        offices={offices}
+        selectedOfficeId={selectedOfficeId}
+        onViewOnMap={handleViewOnMap}
+      />
+      <Map
+        offices={offices}
+        selectedOfficeId={selectedOfficeId}
+        onMarkerClick={handleMarkerClick}
+      />
+      <ContactForm />
     </section>
   );
 };

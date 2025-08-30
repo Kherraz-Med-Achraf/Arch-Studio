@@ -13,6 +13,7 @@ const Header = () => {
 
   // Refs pour l'animation d'entrée
   const logoRef = useRef(null);
+  const burgerRef = useRef(null);
   const navItemRefs = useRef([]);
   // Réinitialiser le tableau de refs à chaque rendu
   navItemRefs.current = [];
@@ -73,6 +74,23 @@ const Header = () => {
       });
     }
 
+    if (burgerRef.current) {
+      gsap.set(burgerRef.current, {
+        x: 48,
+      });
+
+      // Animation fade de gauche vers la droite
+      tl.to(
+        burgerRef.current,
+        {
+          x: 0,
+          duration: 0.8,
+          ease: "power2.out",
+        },
+        "<"
+      );
+    }
+
     if (navItemRefs.current.length) {
       gsap.set(navItemRefs.current, { y: 40 });
 
@@ -95,7 +113,7 @@ const Header = () => {
   return (
     <>
       <header className={styles.header}>
-      <VerticalNavLabel />
+        <VerticalNavLabel />
         <div className={styles.logo}>
           <NavLink to="/" onClick={handleNavClick} ref={logoRef}>
             <Logo />
@@ -104,6 +122,7 @@ const Header = () => {
 
         {/* Burger */}
         <button
+          ref={burgerRef}
           className={`${styles.burger} ${menuOpen ? styles.open : ""}`}
           aria-label="Ouvrir / fermer le menu principal"
           onClick={() => setMenuOpen((o) => !o)}

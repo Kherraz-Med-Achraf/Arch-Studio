@@ -8,8 +8,6 @@ import SmallTeamBanner from "../components/SmallTeamBanner/SmallTeamBanner";
 import ProjectsGrid from "../components/ProjectsGrid/ProjectsGrid";
 
 const HomePage = () => {
-  const [count, setCount] = useState(0);
-
   return (
     <div className="home">
       <Carousel />
